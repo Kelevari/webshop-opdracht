@@ -6,17 +6,17 @@ site:
 billing:
     resource: "@BillingBundle/Controller/"
     type:     annotation
-    prefix:   /billing
+    prefix:   /
 
 product:
     resource: "@ProductBundle/Controller/"
     type:     annotation
-    prefix:   /products
+    prefix:   /
 
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
-    prefix:   /users
+    prefix:   /
 
 app:
     resource: @AppBundle/Controller/

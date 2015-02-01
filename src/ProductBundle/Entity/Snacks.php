@@ -38,7 +38,7 @@ class Snacks
     /**
      * @ORM\Column(type="boolean", nullable=false)
      */
-    private $show;
+    private $available;
 
     /**
      * @ORM\OneToMany(targetEntity="Menu", mappedBy="snacks")
@@ -155,29 +155,6 @@ class Snacks
     }
 
     /**
-     * Set show
-     *
-     * @param boolean $show
-     * @return Snacks
-     */
-    public function setShow($show)
-    {
-        $this->show = $show;
-
-        return $this;
-    }
-
-    /**
-     * Get show
-     *
-     * @return boolean 
-     */
-    public function getShow()
-    {
-        return $this->show;
-    }
-
-    /**
      * Add menu
      *
      * @param \ProductBundle\Entity\Menu $menu
@@ -208,5 +185,28 @@ class Snacks
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    /**
+     * Set available
+     *
+     * @param boolean $available
+     * @return Snacks
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return boolean 
+     */
+    public function getAvailable()
+    {
+        return $this->available;
     }
 }

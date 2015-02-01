@@ -26,6 +26,11 @@ class Drinks
     private $price;
 
     /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $available;
+
+    /**
      * @ORM\OneToMany(targetEntity="Menu", mappedBy="drinks")
      */
     private $menu;
@@ -124,5 +129,28 @@ class Drinks
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    /**
+     * Set available
+     *
+     * @param boolean $available
+     * @return Drinks
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return boolean 
+     */
+    public function getAvailable()
+    {
+        return $this->available;
     }
 }

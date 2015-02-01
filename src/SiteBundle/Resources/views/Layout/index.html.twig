@@ -1,0 +1,185 @@
+{% extends "SiteBundle:Layout:base.html.twig" %}
+{% block title %}Home{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+        {% stylesheets 
+            '@SiteBundle/Resources/public/css/shop-homepage.css' 
+            filter='cssrewrite'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+    
+{% endblock %}
+{% block content %}
+    <form>
+        <table id="frieten" class="table table-striped table-hover">
+            <fieldset>
+                <thead>
+                    <th colspan="5">Frieten</th>
+                </thead>
+                <tbody>
+                    {% for frite in fries %}
+                        <tr>
+                            <td style="width:65%">
+                                {{ frite.size }}
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:10%">
+                                <span class="glyphicon glyphicon-euro"></span>
+                                <p class="pull-right">{{ frite.price }}</p>
+                            </td>
+                            <td style="width:15%">
+                                <a class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333" href="#">
+                                    Add to cart <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </fieldset>
+        </table>
+        <table id="snacks" class="table table-striped table-hover">
+            <fieldset>
+                <thead>
+                    <th colspan="5">Snacks</th>
+                </thead>
+                <tbody>
+                    {% for snack in snacks %}
+                        <tr>
+                            <td style="width:65%">
+                               {{ snack.name }} 
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:10%">
+                               <span class="glyphicon glyphicon-euro"></span>
+                               <p class="pull-right">{{ snack.price }}</p> 
+                            </td>
+                            <td style="width:15%">
+                                <a class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333" href="#">
+                                    Add to cart <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% if snack.special == 1 %}
+                        <tr>
+                            <td style="width:65%">
+                               {{ snack.name }}&nbsp;special 
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:10%">
+                               <span class="glyphicon glyphicon-euro"></span>
+                               <p class="pull-right">{{ snack.specialPrice }}</p> 
+                            </td>
+                            <td style="width:15%">
+                                <a class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333" href="#">
+                                    Add to cart <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </fieldset>
+        </table>
+        <table id="drank" class="table table-striped table-hover">
+            <fieldset>
+                <thead>
+                    <th colspan="5">Dranken</th>
+                </thead>
+                <tbody>
+                    {% for drink in drinks %}
+                        <tr>
+                            <td style="width:65%">
+                               {{ drink.name }} 
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:5%">
+                            </td>
+                            <td style="width:10%">
+                               <span class="glyphicon glyphicon-euro"></span>
+                               <p class="pull-right">{{ drink.price }}</p> 
+                            </td>
+                            <td style="width:15%">
+                                <a class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333" href="#">
+                                    Add to cart <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </fieldset>
+        </table>
+        <table id="koud" class="table table-striped table-hover">
+            <fieldset>
+                <thead>
+                    <th colspan="5">Koude Sauzen</th>
+                </thead>
+                <tbody>
+                    {% for cold in sausCold %}
+                        <tr>
+                            <td style="width:65%">
+                               {{ cold.name }} 
+                            </td>
+                            <td style="width:5%">
+                                <p class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333">klein</p>
+                            </td>
+                            <td style="width:5%">
+                                <p class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333">groot</p>
+                            </td>
+                            <td style="width:10%">
+                               <span class="glyphicon glyphicon-euro"></span>
+                               <p class="pull-right">0.6</p> 
+                            </td>
+                            <td style="width:15%">
+                                <a class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333" href="#">
+                                    Add to cart <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </fieldset>
+        </table>
+        <table id="warm" class="table table-striped table-hover">
+            <fieldset>
+                <thead>
+                    <th colspan="5">Warme sauzen</th>
+                </thead>
+                <tbody>
+                    {% for hot in sausHot %}
+                        <tr>
+                            <td style="width:65%">
+                               {{ hot.name }} 
+                            </td>
+                            <td style="width:5%">
+                                <p class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333">klein</p>
+                            </td>
+                            <td style="width:5%">
+                                <p class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333">groot</p>
+                            </td>
+                            <td style="width:10%">
+                               <span class="glyphicon glyphicon-euro"></span>
+                               <p class="pull-right">1.2</p> 
+                            </td>
+                            <td style="width:15%">
+                                <a class="btn btn-primary" style="background-color:#ccc;border-color:#888;color:#333" href="#">
+                                    Add to cart <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </fieldset>
+        </table>
+    </form>
+{% endblock %}

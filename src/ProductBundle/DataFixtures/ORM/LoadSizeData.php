@@ -14,11 +14,11 @@ class LoadSizeData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $klein = new Size();
-        $klein->setName('klein');
+        $klein->setSize('klein');
         $klein->setPrice(0.60);
         
         $groot = new Size();
-        $groot->setName('groot');
+        $groot->setSize('groot');
         $groot->setPrice(1.20);
 
         $manager->persist($klein);

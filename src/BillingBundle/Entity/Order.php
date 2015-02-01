@@ -31,7 +31,7 @@ class Order
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bill_order", mappedBy="order")
+     * @ORM\OneToMany(targetEntity="BillOrder", mappedBy="order")
      */
     private $billOrder;
     /**
@@ -124,10 +124,10 @@ class Order
     /**
      * Add billOrder
      *
-     * @param \BillingBundle\Entity\Bill_order $billOrder
+     * @param \BillingBundle\Entity\BillOrder $billOrder
      * @return Order
      */
-    public function addBillOrder(\BillingBundle\Entity\Bill_order $billOrder)
+    public function addBillOrder(\BillingBundle\Entity\BillOrder $billOrder)
     {
         $this->billOrder[] = $billOrder;
 
@@ -137,9 +137,9 @@ class Order
     /**
      * Remove billOrder
      *
-     * @param \BillingBundle\Entity\Bill_order $billOrder
+     * @param \BillingBundle\Entity\BillOrder $billOrder
      */
-    public function removeBillOrder(\BillingBundle\Entity\Bill_order $billOrder)
+    public function removeBillOrder(\BillingBundle\Entity\BillOrder $billOrder)
     {
         $this->billOrder->removeElement($billOrder);
     }

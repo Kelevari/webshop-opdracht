@@ -26,6 +26,11 @@ class Menu
     private $price;
 
     /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $available;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Drinks", inversedBy="menu")
      * @ORM\JoinColumn(name="drink_id", referencedColumnName="id")
      */
@@ -38,7 +43,7 @@ class Menu
     private $fries;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Saus_cold", inversedBy="menu")
+     * @ORM\ManyToOne(targetEntity="SausCold", inversedBy="menu")
      * @ORM\JoinColumn(name="saus_cold_id", referencedColumnName="id")
      */
     private $sausCold;
@@ -224,5 +229,28 @@ class Menu
     public function getSnacks()
     {
         return $this->snacks;
+    }
+
+    /**
+     * Set available
+     *
+     * @param boolean $available
+     * @return Menu
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return boolean 
+     */
+    public function getAvailable()
+    {
+        return $this->available;
     }
 }

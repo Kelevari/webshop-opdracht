@@ -10,62 +10,27 @@ class HomeController extends Controller
 {
     /**
      * @Route("/")
-     * @Template()
+     * @Template("SiteBundle:Layout:index.html.twig")
      */
     public function indexAction()
     {
-        return array(
-                // ...
-            );    }
+        $em             = $this->getDoctrine()->getManager();
 
-    /**
-     * @Route("/menus")
-     * @Template()
-     */
-    public function menuAction()
-    {
-        return array(
-                // ...
-            );    }
+        $fries          = $em->getRepository('ProductBundle:Fries')->findAll();
+        $snacks         = $em->getRepository('ProductBundle:Snacks')->findAll();
+        $drinks         = $em->getRepository('ProductBundle:Drinks')->findAll();
+        $sausCold       = $em->getRepository('ProductBundle:SausCold')->findAll();
+        $sausHot        = $em->getRepository('ProductBundle:SausHot')->findAll();
+        $size           = $em->getRepository('ProductBundle:Size')->findAll();
 
-    /**
-     * @Route("/frites")
-     * @Template()
-     */
-    public function friteAction()
-    {
         return array(
-                // ...
-            );    }
-
-    /**
-     * @Route("/drinks")
-     * @Template()
-     */
-    public function drinkAction()
-    {
-        return array(
-                // ...
-            );    }
-
-    /**
-     * @Route("/saus")
-     * @Template()
-     */
-    public function sausAction()
-    {
-        return array(
-                // ...
-            );    }
-
-    /**
-     * @Route("/snacks")
-     * @Template()
-     */
-    public function snackAction()
-    {
-        return array(
-                // ...
-            );    }
+            'fries'     => $fries,
+            'snacks'    => $snacks,
+            'drinks'    => $drinks,
+            'sausCold'  => $sausCold,
+            'sausHot'   => $sausHot,
+            'size'      => $size,
+        ); 
+    }
 
 }
