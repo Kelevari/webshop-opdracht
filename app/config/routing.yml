@@ -1,0 +1,23 @@
+site:
+    resource: "@SiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+billing:
+    resource: "@BillingBundle/Controller/"
+    type:     annotation
+    prefix:   /billing
+
+product:
+    resource: "@ProductBundle/Controller/"
+    type:     annotation
+    prefix:   /products
+
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /users
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
