@@ -1,31 +1,23 @@
-<table>
-	<tr>
-		<th>
-			Product
-		</th>
-		<th>
-			Aantal
-		</th>
-		<th>
-			Prijs
-		</th>
-	</tr>
-{% for item in cart %}
-	<tr>
-    	<td>
-    		{{ item.name }}
-    	</td>
-    	<td>
-    		{{ item.quantity }}
-    	</td>
-    	<td>
-    		{{ item.price }}
-    	</td>
-	</tr>
-{% endfor %}
-	<tr>
-		<td colspan="2">Totaal:</td>
-		<td>{{ item.totalPrice }}</td>
-	</tr>
-</table>
-<a href="/bill">Plaats bestelling</a>
+
+		<li style="float:left;width:100%">
+			<p style="float:left;width:33.333333333333%">Product</p>
+			<p style="float:left;width:33.333333333333%;text-align:right">Aantal</p>
+			<p style="float:left;width:33.333333333333%;text-align:right">Prijs</p>
+		</li>
+		{% for item in cart %}
+    		<li style="float:left;width:100%">
+    			<p style="float:left;width:33.333333333333%">{{ item.name }}</p>
+    			<p style="float:left;width:33.333333333333%;text-align:right">{{ item.quantity }}</p>
+    			<p style="float:left;width:33.333333333333%;text-align:right">{{ item.price }}</p>
+    		</li>
+		{% endfor %}
+		<li style="float:left;width:100%">
+			<p style="float:left;width:50%">Totaal:</p>
+			<p style="float:left;width:50%;text-align:right">27.5</p>
+		</li>
+		<li style="float:left;width:100%">
+			<a href="/bill" class="btn btn-success">Plaats bestelling</a>
+		</li>
+		<li style="float:left;width:100%">
+			<a href="/cart">Ga naar winkelkarretje</a>
+		</li>

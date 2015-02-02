@@ -1,0 +1,47 @@
+{% extends "SiteBundle:Layout:base.html.twig" %}
+{% block title %}Home{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+        {% stylesheets 
+            '@SiteBundle/Resources/public/css/shop-homepage.css' 
+            filter='cssrewrite'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+        {% endstylesheets %}
+    
+{% endblock %}
+{% block content %}
+<div class="col-md-12">
+<table class="table table-striped table-hover">
+	<tr>
+		<th>
+			Product
+		</th>
+		<th>
+			Aantal
+		</th>
+		<th>
+			Prijs
+		</th>
+	</tr>
+{% for item in cart %}
+	<tr>
+    	<td>
+    		{{ item.name }}
+    	</td>
+    	<td>
+    		{{ item.quantity }}
+    	</td>
+    	<td>
+    		{{ item.price }}
+    	</td>
+	</tr>
+{% endfor %}
+	<tr>
+		<td colspan="2">Totaal:</td>
+		<td>27.5</td>
+	</tr>
+</table>
+<a href="/bill" class="btn btn-success">Plaats bestelling</a>
+</div>
+{% endblock %}

@@ -15,13 +15,13 @@ class CustomerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('address_line_1')
-            ->add('address_line_2')
-            ->add('profile')
-            ->add('phone')
-            ->add('city')
+            ->add('firstname', 'text', array('label' => false, 'attr' => array('class' => 'form-control input-md')))
+            ->add('lastname', 'text', array('label' => false, 'attr' => array('class' => 'form-control input-md')))
+            ->add('address_line_1', 'text', array('label' => false, 'attr' => array('class' => 'form-control input-md')))
+            ->add('address_line_2', 'text', array('label' => false, 'attr' => array('class' => 'form-control input-md')))
+            ->add('phone', new PhoneType(), array('label' => false))
+            ->add('city', new CityType(), array('label' => false))
+            ->add('order', 'button', array('attr' => array('class' => "btn btn-success btn-lg btn-block")))
         ;
     }
     
