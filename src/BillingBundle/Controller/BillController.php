@@ -13,7 +13,7 @@ use BillingBundle\Form\BillType;
 /**
  * Bill controller.
  *
- * @Route("/bill")
+ * @Route("/bla")
  */
 class BillController extends Controller
 {

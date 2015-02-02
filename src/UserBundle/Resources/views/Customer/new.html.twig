@@ -12,60 +12,107 @@
 {% endblock %}
 {% block content %}
 <form class="form-horizontal">
-<fieldset>
+    <fieldset>
 
-<!-- Form Name -->
-<legend>Bestelling aan:</legend>
+        <!-- Form Name -->
+        <legend>Bestelling aan:</legend>
 
-	{{ form_start(form) }}
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">Firstname:*</label>  
-  <div class="col-md-5">
-	    {{ form_row(form.firstname) }}
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">Lastname:*</label>  
-  <div class="col-md-5">
-	    {{ form_row(form.lastname) }}
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">Address line 1:*</label>  
-  <div class="col-md-5">
-	    {{ form_row(form.address_line_1) }}
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">Address line 2:*</label>  
-  <div class="col-md-5">
-	    {{ form_row(form.address_line_2) }}
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">phone:*</label>  
-  <div class="col-md-5">
-	    {{ form_row(form.phone) }}
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">City:*</label>  
-  <div class="col-md-5">
-	    {{ form_row(form.city.name) }}
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="firstname">Zip:*</label>  
-  <div class="col-md-5">
-	    {{ form_row(form.city.zip) }}
-  </div>
-</div>
-	{{ form_end(form) }}
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('customer') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+	   {{ form_start(form) }}
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userbundle_customer_firstname">Firstname:*</label>  
+            <div class="col-md-5">
+	           {{ form_row(form.firstname) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userbundle_customer_lastname">Lastname:*</label>  
+            <div class="col-md-5">
+	           {{ form_row(form.lastname) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userbundle_customer_address_line_1">Address line 1:*</label>  
+            <div class="col-md-5">
+	           {{ form_row(form.address_line_1) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userbundle_customer_address_line_2">Address line 2:</label>  
+            <div class="col-md-5">
+	           {{ form_row(form.address_line_2) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userbundle_customer_phone_number">phone:*</label>  
+            <div class="col-md-5">
+	           {{ form_row(form.phone) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userbundle_customer_city_name">City:*</label>  
+            <div class="col-md-5">
+	           {{ form_row(form.city.name) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="userbundle_customer_city_zip">Zip:*</label>  
+            <div class="col-md-5">
+	           {{ form_row(form.city.zip) }}
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="register">Register?</label>
+            <div class="col-md-4">
+                <p id="button" class="btn btn-info">
+                    Click here!
+                </p>
+            </div>
+        </div>
+
+        <div id="register" style="display:none">
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="userbundle_customer_profile_email_email">Email:</label>  
+                <div class="col-md-5">
+                    {{ form_row(form.profile.email) }}
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="userbundle_customer_profile_password">Password</label>
+                <div class="col-md-5">
+                    {{ form_row(form.profile.password) }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <div class="col-md-push-4 col-md-5">
+	           {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-push-4 col-md-5">
+                <a class="btn btn-danger btn-xs btn-block" href="{{ path('customer') }}">
+                    Cancel
+                </a>
+            </div>
+        </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+    $('#button').click(function(){
+      $('#register').toggle();
+    });
+    </script>
 {% endblock %}

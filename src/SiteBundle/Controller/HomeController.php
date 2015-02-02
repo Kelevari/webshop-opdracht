@@ -61,7 +61,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/bill")
+     * @Route("/bill/bill")
      * @Template("SiteBundle:Forms:register.html.twig")
      */
     public function billAction()

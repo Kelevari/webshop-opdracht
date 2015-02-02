@@ -13,7 +13,7 @@ use UserBundle\Form\CustomerType;
 /**
  * Customer controller.
  *
- * @Route("/customer")
+ * @Route("/")
  */
 class CustomerController extends Controller
 {
@@ -40,7 +40,7 @@ class CustomerController extends Controller
      *
      * @Route("/", name="customer_create")
      * @Method("POST")
-     * @Template("UserBundle:Customer:new.html.twig")
+     * @Template()
      */
     public function createAction(Request $request)
     {
@@ -76,7 +76,7 @@ class CustomerController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('button', 'submit', array('label' => 'Order', 'attr' => array('class' => 'btn btn-success btn-lg btn-block')));
 
         return $form;
     }
@@ -84,7 +84,7 @@ class CustomerController extends Controller
     /**
      * Displays a form to create a new Customer entity.
      *
-     * @Route("/new", name="customer_new")
+     * @Route("/to", name="customer_new")
      * @Method("GET")
      * @Template()
      */

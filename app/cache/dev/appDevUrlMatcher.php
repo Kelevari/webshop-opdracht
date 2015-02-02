@@ -204,92 +204,95 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'SiteBundle\\Controller\\HomeController::cartAction',  '_route' => 'site_home_cart',);
         }
 
-        if (0 === strpos($pathinfo, '/bill')) {
+        if (0 === strpos($pathinfo, '/b')) {
             // site_home_bill
-            if ($pathinfo === '/bill') {
+            if ($pathinfo === '/bill/bill') {
                 return array (  '_controller' => 'SiteBundle\\Controller\\HomeController::billAction',  '_route' => 'site_home_bill',);
             }
 
-            // bill
-            if (rtrim($pathinfo, '/') === '/bill') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_bill;
-                }
+            if (0 === strpos($pathinfo, '/bla')) {
+                // bill
+                if (rtrim($pathinfo, '/') === '/bla') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_bill;
+                    }
 
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'bill');
-                }
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'bill');
+                    }
 
-                return array (  '_controller' => 'BillingBundle\\Controller\\BillController::indexAction',  '_route' => 'bill',);
+                    return array (  '_controller' => 'BillingBundle\\Controller\\BillController::indexAction',  '_route' => 'bill',);
+                }
+                not_bill:
+
+                // bill_create
+                if ($pathinfo === '/bla/') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_bill_create;
+                    }
+
+                    return array (  '_controller' => 'BillingBundle\\Controller\\BillController::createAction',  '_route' => 'bill_create',);
+                }
+                not_bill_create:
+
+                // bill_new
+                if ($pathinfo === '/bla/new') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_bill_new;
+                    }
+
+                    return array (  '_controller' => 'BillingBundle\\Controller\\BillController::newAction',  '_route' => 'bill_new',);
+                }
+                not_bill_new:
+
+                // bill_show
+                if (preg_match('#^/bla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_bill_show;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_show')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::showAction',));
+                }
+                not_bill_show:
+
+                // bill_edit
+                if (preg_match('#^/bla/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_bill_edit;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_edit')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::editAction',));
+                }
+                not_bill_edit:
+
+                // bill_update
+                if (preg_match('#^/bla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'PUT') {
+                        $allow[] = 'PUT';
+                        goto not_bill_update;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_update')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::updateAction',));
+                }
+                not_bill_update:
+
+                // bill_delete
+                if (preg_match('#^/bla/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'DELETE') {
+                        $allow[] = 'DELETE';
+                        goto not_bill_delete;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_delete')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::deleteAction',));
+                }
+                not_bill_delete:
+
             }
-            not_bill:
-
-            // bill_create
-            if ($pathinfo === '/bill/') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_bill_create;
-                }
-
-                return array (  '_controller' => 'BillingBundle\\Controller\\BillController::createAction',  '_route' => 'bill_create',);
-            }
-            not_bill_create:
-
-            // bill_new
-            if ($pathinfo === '/bill/new') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_bill_new;
-                }
-
-                return array (  '_controller' => 'BillingBundle\\Controller\\BillController::newAction',  '_route' => 'bill_new',);
-            }
-            not_bill_new:
-
-            // bill_show
-            if (preg_match('#^/bill/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_bill_show;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_show')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::showAction',));
-            }
-            not_bill_show:
-
-            // bill_edit
-            if (preg_match('#^/bill/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_bill_edit;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_edit')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::editAction',));
-            }
-            not_bill_edit:
-
-            // bill_update
-            if (preg_match('#^/bill/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'PUT') {
-                    $allow[] = 'PUT';
-                    goto not_bill_update;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_update')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::updateAction',));
-            }
-            not_bill_update:
-
-            // bill_delete
-            if (preg_match('#^/bill/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                if ($this->context->getMethod() != 'DELETE') {
-                    $allow[] = 'DELETE';
-                    goto not_bill_delete;
-                }
-
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'bill_delete')), array (  '_controller' => 'BillingBundle\\Controller\\BillController::deleteAction',));
-            }
-            not_bill_delete:
 
             if (0 === strpos($pathinfo, '/billorder')) {
                 // billorder
@@ -1065,176 +1068,170 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/c')) {
-            if (0 === strpos($pathinfo, '/city')) {
-                // city
-                if (rtrim($pathinfo, '/') === '/city') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_city;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'city');
-                    }
-
-                    return array (  '_controller' => 'UserBundle\\Controller\\CityController::indexAction',  '_route' => 'city',);
+        if (0 === strpos($pathinfo, '/city')) {
+            // city
+            if (rtrim($pathinfo, '/') === '/city') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_city;
                 }
-                not_city:
 
-                // city_create
-                if ($pathinfo === '/city/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_city_create;
-                    }
-
-                    return array (  '_controller' => 'UserBundle\\Controller\\CityController::createAction',  '_route' => 'city_create',);
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'city');
                 }
-                not_city_create:
 
-                // city_new
-                if ($pathinfo === '/city/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_city_new;
-                    }
-
-                    return array (  '_controller' => 'UserBundle\\Controller\\CityController::newAction',  '_route' => 'city_new',);
-                }
-                not_city_new:
-
-                // city_show
-                if (preg_match('#^/city/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_city_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_show')), array (  '_controller' => 'UserBundle\\Controller\\CityController::showAction',));
-                }
-                not_city_show:
-
-                // city_edit
-                if (preg_match('#^/city/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_city_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_edit')), array (  '_controller' => 'UserBundle\\Controller\\CityController::editAction',));
-                }
-                not_city_edit:
-
-                // city_update
-                if (preg_match('#^/city/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'PUT') {
-                        $allow[] = 'PUT';
-                        goto not_city_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_update')), array (  '_controller' => 'UserBundle\\Controller\\CityController::updateAction',));
-                }
-                not_city_update:
-
-                // city_delete
-                if (preg_match('#^/city/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_city_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_delete')), array (  '_controller' => 'UserBundle\\Controller\\CityController::deleteAction',));
-                }
-                not_city_delete:
-
+                return array (  '_controller' => 'UserBundle\\Controller\\CityController::indexAction',  '_route' => 'city',);
             }
+            not_city:
 
-            if (0 === strpos($pathinfo, '/customer')) {
-                // customer
-                if (rtrim($pathinfo, '/') === '/customer') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_customer;
-                    }
-
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'customer');
-                    }
-
-                    return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::indexAction',  '_route' => 'customer',);
+            // city_create
+            if ($pathinfo === '/city/') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_city_create;
                 }
-                not_customer:
 
-                // customer_create
-                if ($pathinfo === '/customer/') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_customer_create;
-                    }
-
-                    return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::createAction',  '_route' => 'customer_create',);
-                }
-                not_customer_create:
-
-                // customer_new
-                if ($pathinfo === '/customer/new') {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_customer_new;
-                    }
-
-                    return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::newAction',  '_route' => 'customer_new',);
-                }
-                not_customer_new:
-
-                // customer_show
-                if (preg_match('#^/customer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_customer_show;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_show')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::showAction',));
-                }
-                not_customer_show:
-
-                // customer_edit
-                if (preg_match('#^/customer/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                        $allow = array_merge($allow, array('GET', 'HEAD'));
-                        goto not_customer_edit;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_edit')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::editAction',));
-                }
-                not_customer_edit:
-
-                // customer_update
-                if (preg_match('#^/customer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'PUT') {
-                        $allow[] = 'PUT';
-                        goto not_customer_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_update')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::updateAction',));
-                }
-                not_customer_update:
-
-                // customer_delete
-                if (preg_match('#^/customer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    if ($this->context->getMethod() != 'DELETE') {
-                        $allow[] = 'DELETE';
-                        goto not_customer_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_delete')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::deleteAction',));
-                }
-                not_customer_delete:
-
+                return array (  '_controller' => 'UserBundle\\Controller\\CityController::createAction',  '_route' => 'city_create',);
             }
+            not_city_create:
+
+            // city_new
+            if ($pathinfo === '/city/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_city_new;
+                }
+
+                return array (  '_controller' => 'UserBundle\\Controller\\CityController::newAction',  '_route' => 'city_new',);
+            }
+            not_city_new:
+
+            // city_show
+            if (preg_match('#^/city/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_city_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_show')), array (  '_controller' => 'UserBundle\\Controller\\CityController::showAction',));
+            }
+            not_city_show:
+
+            // city_edit
+            if (preg_match('#^/city/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_city_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_edit')), array (  '_controller' => 'UserBundle\\Controller\\CityController::editAction',));
+            }
+            not_city_edit:
+
+            // city_update
+            if (preg_match('#^/city/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'PUT') {
+                    $allow[] = 'PUT';
+                    goto not_city_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_update')), array (  '_controller' => 'UserBundle\\Controller\\CityController::updateAction',));
+            }
+            not_city_update:
+
+            // city_delete
+            if (preg_match('#^/city/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_city_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'city_delete')), array (  '_controller' => 'UserBundle\\Controller\\CityController::deleteAction',));
+            }
+            not_city_delete:
 
         }
+
+        // customer
+        if (rtrim($pathinfo, '/') === '') {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_customer;
+            }
+
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'customer');
+            }
+
+            return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::indexAction',  '_route' => 'customer',);
+        }
+        not_customer:
+
+        // customer_create
+        if ($pathinfo === '/') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_customer_create;
+            }
+
+            return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::createAction',  '_route' => 'customer_create',);
+        }
+        not_customer_create:
+
+        // customer_new
+        if ($pathinfo === '/to') {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_customer_new;
+            }
+
+            return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::newAction',  '_route' => 'customer_new',);
+        }
+        not_customer_new:
+
+        // customer_show
+        if (preg_match('#^/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_customer_show;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_show')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::showAction',));
+        }
+        not_customer_show:
+
+        // customer_edit
+        if (preg_match('#^/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_customer_edit;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_edit')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::editAction',));
+        }
+        not_customer_edit:
+
+        // customer_update
+        if (preg_match('#^/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'PUT') {
+                $allow[] = 'PUT';
+                goto not_customer_update;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_update')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::updateAction',));
+        }
+        not_customer_update:
+
+        // customer_delete
+        if (preg_match('#^/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if ($this->context->getMethod() != 'DELETE') {
+                $allow[] = 'DELETE';
+                goto not_customer_delete;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'customer_delete')), array (  '_controller' => 'UserBundle\\Controller\\CustomerController::deleteAction',));
+        }
+        not_customer_delete:
 
         // user_default_index
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {

@@ -15,13 +15,11 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('password')
-            ->add('salt')
-            ->add('created_at')
-            ->add('updated_at')
-            ->add('deleted_at')
-            ->add('customer')
-            ->add('email')
+            ->add('password', 'password', array('label' => false, 'attr' => array('class' => 'form-control input-md')))
+            ->add('salt', 'hidden')
+            ->add('created_at', 'hidden', array('attr' => array('value' => date('Y-m-d h:i:s'))))
+            ->add('customer', 'hidden')
+            ->add('email', new EmailType(), array('label' => false))
         ;
     }
     

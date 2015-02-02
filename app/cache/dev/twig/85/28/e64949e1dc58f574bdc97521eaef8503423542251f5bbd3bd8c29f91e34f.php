@@ -21,6 +21,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
             'content' => array($this, 'block_content'),
+            'js' => array($this, 'block_js'),
         );
     }
 
@@ -76,92 +77,150 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
     {
         // line 14
         echo "<form class=\"form-horizontal\">
-<fieldset>
+    <fieldset>
 
-<!-- Form Name -->
-<legend>Bestelling aan:</legend>
+        <!-- Form Name -->
+        <legend>Bestelling aan:</legend>
 
-\t";
+\t   ";
         // line 20
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
         echo "
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"firstname\">Firstname:*</label>  
-  <div class=\"col-md-5\">
-\t    ";
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"userbundle_customer_firstname\">Firstname:*</label>  
+            <div class=\"col-md-5\">
+\t           ";
         // line 24
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "firstname", array()), 'row');
         echo "
-  </div>
-</div>
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"firstname\">Lastname:*</label>  
-  <div class=\"col-md-5\">
-\t    ";
-        // line 30
+            </div>
+        </div>
+
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"userbundle_customer_lastname\">Lastname:*</label>  
+            <div class=\"col-md-5\">
+\t           ";
+        // line 31
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lastname", array()), 'row');
         echo "
-  </div>
-</div>
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"firstname\">Address line 1:*</label>  
-  <div class=\"col-md-5\">
-\t    ";
-        // line 36
+            </div>
+        </div>
+
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"userbundle_customer_address_line_1\">Address line 1:*</label>  
+            <div class=\"col-md-5\">
+\t           ";
+        // line 38
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_1", array()), 'row');
         echo "
-  </div>
-</div>
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"firstname\">Address line 2:*</label>  
-  <div class=\"col-md-5\">
-\t    ";
-        // line 42
+            </div>
+        </div>
+
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"userbundle_customer_address_line_2\">Address line 2:</label>  
+            <div class=\"col-md-5\">
+\t           ";
+        // line 45
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_2", array()), 'row');
         echo "
-  </div>
-</div>
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"firstname\">phone:*</label>  
-  <div class=\"col-md-5\">
-\t    ";
-        // line 48
+            </div>
+        </div>
+
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"userbundle_customer_phone_number\">phone:*</label>  
+            <div class=\"col-md-5\">
+\t           ";
+        // line 52
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "phone", array()), 'row');
         echo "
-  </div>
-</div>
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"firstname\">City:*</label>  
-  <div class=\"col-md-5\">
-\t    ";
-        // line 54
+            </div>
+        </div>
+
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"userbundle_customer_city_name\">City:*</label>  
+            <div class=\"col-md-5\">
+\t           ";
+        // line 59
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "name", array()), 'row');
         echo "
-  </div>
-</div>
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"firstname\">Zip:*</label>  
-  <div class=\"col-md-5\">
-\t    ";
-        // line 60
+            </div>
+        </div>
+
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"userbundle_customer_city_zip\">Zip:*</label>  
+            <div class=\"col-md-5\">
+\t           ";
+        // line 66
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "zip", array()), 'row');
         echo "
-  </div>
-</div>
-\t";
-        // line 63
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class=\"form-group\">
+            <label class=\"col-md-4 control-label\" for=\"register\">Register?</label>
+            <div class=\"col-md-4\">
+                <p id=\"button\" class=\"btn btn-info\">
+                    Click here!
+                </p>
+            </div>
+        </div>
+
+        <div id=\"register\" style=\"display:none\">
+            <!-- Text input-->
+            <div class=\"form-group\">
+                <label class=\"col-md-4 control-label\" for=\"userbundle_customer_profile_email_email\">Email:</label>  
+                <div class=\"col-md-5\">
+                    ";
+        // line 85
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profile", array()), "email", array()), 'row');
+        echo "
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class=\"form-group\">
+                <label class=\"col-md-4 control-label\" for=\"userbundle_customer_profile_password\">Password</label>
+                <div class=\"col-md-5\">
+                    ";
+        // line 93
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profile", array()), "password", array()), 'row');
+        echo "
+                </div>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class=\"form-group\">
+            <div class=\"col-md-push-4 col-md-5\">
+\t           ";
+        // line 101
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
-        <ul class=\"record_actions\">
-    <li>
-        <a href=\"";
-        // line 66
+            </div>
+        </div>
+        <div class=\"form-group\">
+            <div class=\"col-md-push-4 col-md-5\">
+                <a class=\"btn btn-danger btn-xs btn-block\" href=\"";
+        // line 106
         echo $this->env->getExtension('routing')->getPath("customer");
         echo "\">
-            Back to the list
-        </a>
-    </li>
-</ul>
+                    Cancel
+                </a>
+            </div>
+        </div>
+";
+    }
+
+    // line 112
+    public function block_js($context, array $blocks = array())
+    {
+        // line 113
+        echo "    <script type=\"text/javascript\">
+    \$('#button').click(function(){
+      \$('#register').toggle();
+    });
+    </script>
 ";
     }
 
@@ -177,6 +236,6 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
 
     public function getDebugInfo()
     {
-        return array (  159 => 66,  153 => 63,  147 => 60,  138 => 54,  129 => 48,  120 => 42,  111 => 36,  102 => 30,  93 => 24,  86 => 20,  78 => 14,  75 => 13,  70 => 11,  56 => 9,  52 => 5,  47 => 4,  44 => 3,  38 => 2,  11 => 1,);
+        return array (  219 => 113,  216 => 112,  206 => 106,  198 => 101,  187 => 93,  176 => 85,  154 => 66,  144 => 59,  134 => 52,  124 => 45,  114 => 38,  104 => 31,  94 => 24,  87 => 20,  79 => 14,  76 => 13,  71 => 11,  57 => 9,  53 => 5,  48 => 4,  45 => 3,  39 => 2,  11 => 1,);
     }
 }
