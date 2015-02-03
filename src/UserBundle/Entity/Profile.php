@@ -15,41 +15,41 @@ class Profile
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=false)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=64, nullable=false)
+     * @ORM\Column(type="string", length=64, nullable=true)
      */
     private $salt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $deleted_at;
 
     /**
-     * @ORM\OneToOne(targetEntity="Customer", inversedBy="profile")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", unique=true)
-     */
-    private $customer;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Email", inversedBy="profile")
+     * @ORM\ManyToOne(targetEntity="Email", inversedBy="profile",cascade={"persist"})
      * @ORM\JoinColumn(name="email_id", referencedColumnName="id")
      */
     private $email;
+
+    /**
+    * @ORM\OneToOne(targetEntity="Customer", inversedBy="profile")
+    * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+    */
+    private $customer;
 
     /**
      * Get id
@@ -105,29 +105,6 @@ class Profile
     public function getSalt()
     {
         return $this->salt;
-    }
-
-    /**
-     * Set customer
-     *
-     * @param \UserBundle\Entity\Customer $customer
-     * @return Profile
-     */
-    public function setCustomer(\UserBundle\Entity\Customer $customer = null)
-    {
-        $this->customer = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Get customer
-     *
-     * @return \UserBundle\Entity\Customer 
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
     }
 
     /**
@@ -220,5 +197,28 @@ class Profile
     public function getDeletedAt()
     {
         return $this->deleted_at;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \UserBundle\Entity\Customer $customer
+     * @return Profile
+     */
+    public function setCustomer(\UserBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+    
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \UserBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
     }
 }

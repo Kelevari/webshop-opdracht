@@ -38,7 +38,7 @@ class CustomerController extends Controller
     /**
      * Creates a new Customer entity.
      *
-     * @Route("/", name="customer_create")
+     * @Route("/to", name="customer_create")
      * @Method("POST")
      * @Template()
      */
@@ -56,10 +56,7 @@ class CustomerController extends Controller
             return $this->redirect($this->generateUrl('customer_show', array('id' => $entity->getId())));
         }
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+        return $this->redirect($this->generateUrl('customer_new', array('error' => 'somthing went wrong' )));
     }
 
     /**
@@ -74,6 +71,7 @@ class CustomerController extends Controller
         $form = $this->createForm(new CustomerType(), $entity, array(
             'action' => $this->generateUrl('customer_create'),
             'method' => 'POST',
+            'attr'   => array('class' => 'form-horizontal'),
         ));
 
         $form->add('button', 'submit', array('label' => 'Order', 'attr' => array('class' => 'btn btn-success btn-lg btn-block')));

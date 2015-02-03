@@ -15,10 +15,10 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('password', 'password', array('label' => false, 'attr' => array('class' => 'form-control input-md')))
-            ->add('salt', 'hidden')
-            ->add('created_at', 'hidden', array('attr' => array('value' => date('Y-m-d h:i:s'))))
-            ->add('customer', 'hidden')
+            ->add('password', 'password', array('label' => false,'required' => false, 'attr' => array('class' => 'form-control input-md')))
+            ->add('salt', 'hidden', array('required' => false, 'attr' => array('value' => 'sfgdfgsdfgsegserghsdghsdg')))
+            ->add('created_at', 'hidden', array('required' => false))
+            ->add('customer', new CustomerType(), array('label' => false))
             ->add('email', new EmailType(), array('label' => false))
         ;
     }

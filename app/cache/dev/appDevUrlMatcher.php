@@ -1167,27 +1167,30 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
         not_customer:
 
-        // customer_create
-        if ($pathinfo === '/') {
-            if ($this->context->getMethod() != 'POST') {
-                $allow[] = 'POST';
-                goto not_customer_create;
+        if (0 === strpos($pathinfo, '/to')) {
+            // customer_create
+            if ($pathinfo === '/to') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_customer_create;
+                }
+
+                return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::createAction',  '_route' => 'customer_create',);
             }
+            not_customer_create:
 
-            return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::createAction',  '_route' => 'customer_create',);
-        }
-        not_customer_create:
+            // customer_new
+            if ($pathinfo === '/to') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_customer_new;
+                }
 
-        // customer_new
-        if ($pathinfo === '/to') {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
-                goto not_customer_new;
+                return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::newAction',  '_route' => 'customer_new',);
             }
+            not_customer_new:
 
-            return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::newAction',  '_route' => 'customer_new',);
         }
-        not_customer_new:
 
         // customer_show
         if (preg_match('#^/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {

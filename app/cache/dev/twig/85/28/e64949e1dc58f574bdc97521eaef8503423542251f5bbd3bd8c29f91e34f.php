@@ -76,22 +76,21 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
     public function block_content($context, array $blocks = array())
     {
         // line 14
-        echo "<form class=\"form-horizontal\">
+        echo "
+\t   ";
+        // line 15
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
+        echo "
     <fieldset>
 
         <!-- Form Name -->
         <legend>Bestelling aan:</legend>
-
-\t   ";
-        // line 20
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
-        echo "
         <div class=\"form-group\">
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_firstname\">Firstname:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 24
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "firstname", array()), 'row');
+        // line 23
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "firstname", array()), 'row');
         echo "
             </div>
         </div>
@@ -100,8 +99,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_lastname\">Lastname:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 31
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lastname", array()), 'row');
+        // line 30
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "lastname", array()), 'row');
         echo "
             </div>
         </div>
@@ -110,8 +109,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_address_line_1\">Address line 1:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 38
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_1", array()), 'row');
+        // line 37
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "address_line_1", array()), 'row');
         echo "
             </div>
         </div>
@@ -120,8 +119,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_address_line_2\">Address line 2:</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 45
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_2", array()), 'row');
+        // line 44
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "address_line_2", array()), 'row');
         echo "
             </div>
         </div>
@@ -130,8 +129,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_phone_number\">phone:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 52
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "phone", array()), 'row');
+        // line 51
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "phone", array()), "number", array()), 'row');
         echo "
             </div>
         </div>
@@ -140,8 +139,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_city_name\">City:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 59
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "name", array()), 'row');
+        // line 58
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "city", array()), "name", array()), 'row');
         echo "
             </div>
         </div>
@@ -150,8 +149,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_city_zip\">Zip:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 66
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "zip", array()), 'row');
+        // line 65
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "city", array()), "zip", array()), 'row');
         echo "
             </div>
         </div>
@@ -172,8 +171,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
                 <label class=\"col-md-4 control-label\" for=\"userbundle_customer_profile_email_email\">Email:</label>  
                 <div class=\"col-md-5\">
                     ";
-        // line 85
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profile", array()), "email", array()), 'row');
+        // line 84
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'row');
         echo "
                 </div>
             </div>
@@ -183,8 +182,8 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
                 <label class=\"col-md-4 control-label\" for=\"userbundle_customer_profile_password\">Password</label>
                 <div class=\"col-md-5\">
                     ";
-        // line 93
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profile", array()), "password", array()), 'row');
+        // line 92
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "password", array()), 'row');
         echo "
                 </div>
             </div>
@@ -194,7 +193,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
         <div class=\"form-group\">
             <div class=\"col-md-push-4 col-md-5\">
 \t           ";
-        // line 101
+        // line 100
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
             </div>
@@ -202,7 +201,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
         <div class=\"form-group\">
             <div class=\"col-md-push-4 col-md-5\">
                 <a class=\"btn btn-danger btn-xs btn-block\" href=\"";
-        // line 106
+        // line 105
         echo $this->env->getExtension('routing')->getPath("customer");
         echo "\">
                     Cancel
@@ -212,10 +211,10 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
 ";
     }
 
-    // line 112
+    // line 111
     public function block_js($context, array $blocks = array())
     {
-        // line 113
+        // line 112
         echo "    <script type=\"text/javascript\">
     \$('#button').click(function(){
       \$('#register').toggle();
@@ -236,6 +235,6 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
 
     public function getDebugInfo()
     {
-        return array (  219 => 113,  216 => 112,  206 => 106,  198 => 101,  187 => 93,  176 => 85,  154 => 66,  144 => 59,  134 => 52,  124 => 45,  114 => 38,  104 => 31,  94 => 24,  87 => 20,  79 => 14,  76 => 13,  71 => 11,  57 => 9,  53 => 5,  48 => 4,  45 => 3,  39 => 2,  11 => 1,);
+        return array (  218 => 112,  215 => 111,  205 => 105,  197 => 100,  186 => 92,  175 => 84,  153 => 65,  143 => 58,  133 => 51,  123 => 44,  113 => 37,  103 => 30,  93 => 23,  82 => 15,  79 => 14,  76 => 13,  71 => 11,  57 => 9,  53 => 5,  48 => 4,  45 => 3,  39 => 2,  11 => 1,);
     }
 }
