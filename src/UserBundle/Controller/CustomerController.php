@@ -84,7 +84,7 @@ class CustomerController extends Controller
      *
      * @Route("/to", name="customer_new")
      * @Method("GET")
-     * @Template()
+     * @Template("UserBundle:Customer:new.html.twig")
      */
     public function newAction()
     {

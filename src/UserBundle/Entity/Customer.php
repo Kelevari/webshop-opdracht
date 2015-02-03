@@ -35,23 +35,25 @@ class Customer
     private $address_line_2;
 
     /**
-     * @ORM\OneToOne(targetEntity="Profile", mappedBy="customer",cascade={"persist"})
+     * 
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id", unique=true)
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Profile", inversedBy="customer",cascade={"persist"})
      */
     private $profile;
 
     /**
-     * @ORM\OneToMany(targetEntity="BillingBundle\Entity\Bill", mappedBy="customer",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="BillingBundle\Entity\Bill", mappedBy="customer", cascade={"persist"})
      */
     private $bill;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Phone", inversedBy="customer",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Phone", inversedBy="customer", cascade={"persist"})
      * @ORM\JoinColumn(name="phone_id", referencedColumnName="id")
      */
     private $phone;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="customer",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\City", inversedBy="customer", cascade={"persist"})
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private $city;

@@ -15,12 +15,12 @@ class Email
     private $id;
 
     /**
-     * @ORM\Column(type="string", unique=true, length=50, nullable=false)
+     * @ORM\Column(type="string", unique=true, length=50, nullable=true)
      */
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="Profile", mappedBy="email",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Profile", mappedBy="email", cascade={"persist"})
      */
     private $profile;
     /**

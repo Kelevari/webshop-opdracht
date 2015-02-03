@@ -90,7 +90,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <div class=\"col-md-5\">
 \t           ";
         // line 23
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "firstname", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "firstname", array()), 'row');
         echo "
             </div>
         </div>
@@ -100,7 +100,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <div class=\"col-md-5\">
 \t           ";
         // line 30
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "lastname", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lastname", array()), 'row');
         echo "
             </div>
         </div>
@@ -110,7 +110,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <div class=\"col-md-5\">
 \t           ";
         // line 37
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "address_line_1", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_1", array()), 'row');
         echo "
             </div>
         </div>
@@ -120,7 +120,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <div class=\"col-md-5\">
 \t           ";
         // line 44
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "address_line_2", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_2", array()), 'row');
         echo "
             </div>
         </div>
@@ -130,7 +130,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <div class=\"col-md-5\">
 \t           ";
         // line 51
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "phone", array()), "number", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "phone", array()), "number", array()), 'row');
         echo "
             </div>
         </div>
@@ -140,7 +140,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <div class=\"col-md-5\">
 \t           ";
         // line 58
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "city", array()), "name", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "name", array()), 'row');
         echo "
             </div>
         </div>
@@ -150,7 +150,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <div class=\"col-md-5\">
 \t           ";
         // line 65
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "customer", array()), "city", array()), "zip", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "zip", array()), 'row');
         echo "
             </div>
         </div>
@@ -159,7 +159,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
         <div class=\"form-group\">
             <label class=\"col-md-4 control-label\" for=\"register\">Register?</label>
             <div class=\"col-md-4\">
-                <p id=\"button\" class=\"btn btn-info\">
+                <p onclick=\"yesNo();\" id=\"button\" class=\"btn btn-info\">
                     Click here!
                 </p>
             </div>
@@ -172,7 +172,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
                 <div class=\"col-md-5\">
                     ";
         // line 84
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profile", array()), "email", array()), 'row');
         echo "
                 </div>
             </div>
@@ -183,7 +183,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
                 <div class=\"col-md-5\">
                     ";
         // line 92
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "password", array()), 'row');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "profile", array()), "password", array()), 'row');
         echo "
                 </div>
             </div>
@@ -216,9 +216,20 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
     {
         // line 112
         echo "    <script type=\"text/javascript\">
-    \$('#button').click(function(){
-      \$('#register').toggle();
+    \$('document').ready(function(){
+        \$('#button').click(function(){
+            \$('#register').toggle('slow');
+        });
     });
+
+    var check = false;
+    function yesNo(check) {
+        if (check == false) {
+            check = true
+        } else{
+            check =false
+        };
+    }
     </script>
 ";
     }

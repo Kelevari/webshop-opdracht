@@ -40,14 +40,14 @@ class Profile
     private $deleted_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Email", inversedBy="profile",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Email", inversedBy="profile", cascade={"persist"})
      * @ORM\JoinColumn(name="email_id", referencedColumnName="id")
      */
     private $email;
 
     /**
-    * @ORM\OneToOne(targetEntity="Customer", inversedBy="profile")
-    * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+    * 
+    * @ORM\OneToOne(targetEntity="UserBundle\Entity\Customer", mappedBy="profile",cascade={"persist"})
     */
     private $customer;
 

@@ -87,7 +87,7 @@ class ProfileController extends Controller
      *
      * @Route("/new", name="profile_new")
      * @Method("GET")
-     * @Template("UserBundle:Customer:new.html.twig")
+     * @Template()
      */
     public function newAction()
     {
