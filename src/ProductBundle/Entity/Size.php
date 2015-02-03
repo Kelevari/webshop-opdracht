@@ -26,7 +26,7 @@ class Size
     private $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="Menu", mappedBy="size")
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\Menu", mappedBy="size")
      */
     private $menu;
     /**

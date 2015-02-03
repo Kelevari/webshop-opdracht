@@ -20,7 +20,7 @@ class Phone
     private $number;
 
     /**
-     * @ORM\OneToMany(targetEntity="Customer", mappedBy="phone")
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Customer", mappedBy="phone")
      */
     private $customer;
     /**

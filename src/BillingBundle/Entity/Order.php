@@ -31,7 +31,7 @@ class Order
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity="BillOrder", mappedBy="order")
+     * @ORM\OneToMany(targetEntity="BillingBundle\Entity\BillOrder", mappedBy="order")
      */
     private $billOrder;
     /**

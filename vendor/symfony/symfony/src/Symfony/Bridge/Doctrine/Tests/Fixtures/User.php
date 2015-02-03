@@ -15,17 +15,24 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\Mapping AS ORM;
 
-/** @Entity */
+/** 
+ * @ORM\Entity */
 class User implements UserInterface
 {
-    /** @Id @Column(type="integer") */
+    /** 
+     * @ORM\Id 
+     * @ORM\Column(type="integer") */
     protected $id1;
 
-    /** @Id @Column(type="integer") */
+    /** 
+     * @ORM\Id 
+     * @ORM\Column(type="integer") */
     protected $id2;
 
-    /** @Column(type="string") */
+    /** 
+     * @ORM\Column(type="string", nullable=true) */
     public $name;
 
     public function __construct($id1, $id2, $name)

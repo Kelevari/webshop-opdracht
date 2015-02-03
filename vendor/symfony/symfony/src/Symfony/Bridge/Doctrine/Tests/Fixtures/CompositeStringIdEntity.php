@@ -14,17 +14,24 @@ namespace Symfony\Bridge\Doctrine\Tests\Fixtures;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-/** @Entity */
+/** 
+ * @ORM\Entity */
 class CompositeStringIdEntity
 {
-    /** @Id @Column(type="string") */
+    /** 
+     * @ORM\Id 
+     * @ORM\Column(type="string") */
     protected $id1;
 
-    /** @Id @Column(type="string") */
+    /** 
+     * @ORM\Id 
+     * @ORM\Column(type="string") */
     protected $id2;
 
-    /** @Column(type="string") */
+    /** 
+     * @ORM\Column(type="string", nullable=true) */
     public $name;
 
     public function __construct($id1, $id2, $name)

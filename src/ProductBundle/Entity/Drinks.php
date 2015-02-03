@@ -31,7 +31,7 @@ class Drinks
     private $available;
 
     /**
-     * @ORM\OneToMany(targetEntity="Menu", mappedBy="drinks")
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\Menu", mappedBy="drinks")
      */
     private $menu;
     /**

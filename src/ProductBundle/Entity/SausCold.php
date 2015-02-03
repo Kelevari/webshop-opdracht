@@ -26,7 +26,7 @@ class SausCold
     private $available;
 
     /**
-     * @ORM\OneToMany(targetEntity="Menu", mappedBy="sausCold")
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\Menu", mappedBy="sausCold")
      */
     private $menu;
     

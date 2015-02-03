@@ -25,28 +25,28 @@ class Profile
     private $salt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $deleted_at;
 
     /**
-     * @ORM\OneToOne(targetEntity="Customer", inversedBy="profile")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", unique=true)
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Customer", mappedBy="profile")
+     * 
      */
     private $customer;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Email", inversedBy="profile")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Email", inversedBy="profile")
      * @ORM\JoinColumn(name="email_id", referencedColumnName="id")
      */
     private $email;

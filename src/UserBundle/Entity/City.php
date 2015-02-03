@@ -26,7 +26,7 @@ class City
     private $zip;
 
     /**
-     * @ORM\OneToMany(targetEntity="Customer", mappedBy="city")
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Customer", mappedBy="city")
      */
     private $customer;
     /**

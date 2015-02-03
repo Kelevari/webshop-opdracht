@@ -31,31 +31,31 @@ class Menu
     private $available;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Drinks", inversedBy="menu")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Drinks", inversedBy="menu")
      * @ORM\JoinColumn(name="drink_id", referencedColumnName="id")
      */
     private $drinks;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Fries", inversedBy="menu")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Fries", inversedBy="menu")
      * @ORM\JoinColumn(name="fries_id", referencedColumnName="id")
      */
     private $fries;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SausCold", inversedBy="menu")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\SausCold", inversedBy="menu")
      * @ORM\JoinColumn(name="saus_cold_id", referencedColumnName="id")
      */
     private $sausCold;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Size", inversedBy="menu")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Size", inversedBy="menu")
      * @ORM\JoinColumn(name="size_id", referencedColumnName="id")
      */
     private $size;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Snacks", inversedBy="menu")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Snacks", inversedBy="menu")
      * @ORM\JoinColumn(name="snacks_id", referencedColumnName="id")
      */
     private $snacks;

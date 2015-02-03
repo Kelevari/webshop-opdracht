@@ -16,13 +16,13 @@ class BillOrder
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Bill", inversedBy="billProducts")
+     * @ORM\ManyToOne(targetEntity="BillingBundle\Entity\Bill", inversedBy="billProducts")
      * @ORM\JoinColumn(name="bill_id", referencedColumnName="id")
      */
     private $bill;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Order", inversedBy="billOrder")
+     * @ORM\ManyToOne(targetEntity="BillingBundle\Entity\Order", inversedBy="billOrder")
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
      */
     private $order;

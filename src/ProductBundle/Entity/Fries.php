@@ -26,7 +26,7 @@ class Fries
     private $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="Menu", mappedBy="fries")
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\Menu", mappedBy="fries")
      */
     private $menu;
     /**

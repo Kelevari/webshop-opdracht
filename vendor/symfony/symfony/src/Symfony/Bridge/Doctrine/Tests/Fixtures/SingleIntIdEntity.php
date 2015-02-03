@@ -14,14 +14,19 @@ namespace Symfony\Bridge\Doctrine\Tests\Fixtures;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping AS ORM;
 
-/** @Entity */
+/** 
+ * @ORM\Entity */
 class SingleIntIdEntity
 {
-    /** @Id @Column(type="integer") */
+    /** 
+     * @ORM\Id 
+     * @ORM\Column(type="integer") */
     protected $id;
 
-    /** @Column(type="string", nullable=true) */
+    /** 
+     * @ORM\Column(type="string", nullable=true) */
     public $name;
 
     public function __construct($id, $name)
