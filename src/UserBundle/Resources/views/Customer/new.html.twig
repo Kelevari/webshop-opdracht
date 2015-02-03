@@ -11,59 +11,58 @@
     
 {% endblock %}
 {% block content %}
-<form class="form-horizontal">
+
+	   {{ form_start(form) }}
     <fieldset>
 
         <!-- Form Name -->
         <legend>Bestelling aan:</legend>
-
-	   {{ form_start(form) }}
         <div class="form-group">
             <label class="col-md-4 control-label" for="userbundle_customer_firstname">Firstname:*</label>  
             <div class="col-md-5">
-	           {{ form_row(form.firstname) }}
+	           {{ form_row(form.customer.firstname) }}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="userbundle_customer_lastname">Lastname:*</label>  
             <div class="col-md-5">
-	           {{ form_row(form.lastname) }}
+	           {{ form_row(form.customer.lastname) }}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="userbundle_customer_address_line_1">Address line 1:*</label>  
             <div class="col-md-5">
-	           {{ form_row(form.address_line_1) }}
+	           {{ form_row(form.customer.address_line_1) }}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="userbundle_customer_address_line_2">Address line 2:</label>  
             <div class="col-md-5">
-	           {{ form_row(form.address_line_2) }}
+	           {{ form_row(form.customer.address_line_2) }}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="userbundle_customer_phone_number">phone:*</label>  
             <div class="col-md-5">
-	           {{ form_row(form.phone) }}
+	           {{ form_row(form.customer.phone.number) }}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="userbundle_customer_city_name">City:*</label>  
             <div class="col-md-5">
-	           {{ form_row(form.city.name) }}
+	           {{ form_row(form.customer.city.name) }}
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="userbundle_customer_city_zip">Zip:*</label>  
             <div class="col-md-5">
-	           {{ form_row(form.city.zip) }}
+	           {{ form_row(form.customer.city.zip) }}
             </div>
         </div>
 
@@ -82,7 +81,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="userbundle_customer_profile_email_email">Email:</label>  
                 <div class="col-md-5">
-                    {{ form_row(form.profile.email) }}
+                    {{ form_row(form.email) }}
                 </div>
             </div>
 
@@ -90,7 +89,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="userbundle_customer_profile_password">Password</label>
                 <div class="col-md-5">
-                    {{ form_row(form.profile.password) }}
+                    {{ form_row(form.password) }}
                 </div>
             </div>
         </div>

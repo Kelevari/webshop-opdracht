@@ -2,6 +2,27 @@
 
 // SiteBundle:Layout:single.html.twig
 return array (
+  1534868 => 
+  array (
+    0 => 
+    array (
+      0 => '@SiteBundle/Resources/public/css/shop-homepage.css',
+    ),
+    1 => 
+    array (
+      0 => 'cssrewrite',
+    ),
+    2 => 
+    array (
+      'output' => '_controller/css/1534868.css',
+      'name' => '1534868',
+      'debug' => NULL,
+      'combine' => NULL,
+      'vars' => 
+      array (
+      ),
+    ),
+  ),
   'c4fef24' => 
   array (
     0 => 
@@ -37,27 +58,6 @@ return array (
     array (
       'output' => '_controller/css/d09ef00.css',
       'name' => 'd09ef00',
-      'debug' => NULL,
-      'combine' => NULL,
-      'vars' => 
-      array (
-      ),
-    ),
-  ),
-  1534868 => 
-  array (
-    0 => 
-    array (
-      0 => '@SiteBundle/Resources/public/css/shop-homepage.css',
-    ),
-    1 => 
-    array (
-      0 => 'cssrewrite',
-    ),
-    2 => 
-    array (
-      'output' => '_controller/css/1534868.css',
-      'name' => '1534868',
       'debug' => NULL,
       'combine' => NULL,
       'vars' => 

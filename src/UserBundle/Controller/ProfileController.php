@@ -74,9 +74,10 @@ class ProfileController extends Controller
         $form = $this->createForm(new ProfileType(), $entity, array(
             'action' => $this->generateUrl('profile_create'),
             'method' => 'POST',
+            'attr'   => array('class' => 'form-horizontal'),
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('button', 'submit', array('label' => 'Order', 'attr' => array('class' => 'btn btn-success btn-lg btn-block')));
 
         return $form;
     }
@@ -86,7 +87,7 @@ class ProfileController extends Controller
      *
      * @Route("/new", name="profile_new")
      * @Method("GET")
-     * @Template()
+     * @Template("UserBundle:Customer:new.html.twig")
      */
     public function newAction()
     {

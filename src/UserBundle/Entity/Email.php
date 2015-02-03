@@ -20,7 +20,7 @@ class Email
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Profile", mappedBy="email")
+     * @ORM\OneToMany(targetEntity="Profile", mappedBy="email",cascade={"persist"})
      */
     private $profile;
     /**

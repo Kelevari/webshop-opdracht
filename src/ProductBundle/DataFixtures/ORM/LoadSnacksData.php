@@ -98,7 +98,7 @@ class LoadSnacksData implements FixtureInterface
         $chickennuggets->setAvailable(true);
         
         $kaassouffle = new Snacks();
-        $kaassouffle->setName('kaassouffl&eacute;');
+        $kaassouffle->setName('kaassoufflé');
         $kaassouffle->setPrice(1.75);
         $kaassouffle->setSpecial(0);
         $kaassouffle->setAvailable(true);
@@ -152,19 +152,19 @@ class LoadSnacksData implements FixtureInterface
         $kipkrokant->setAvailable(true);
         
         $sate = new Snacks();
-        $sate->setName('sat&eacute;');
+        $sate->setName('saté');
         $sate->setPrice(3.00);
         $sate->setSpecial(0);
         $sate->setAvailable(true);
         
         $kipsate = new Snacks();
-        $kipsate->setName('kipsat&eacute;');
+        $kipsate->setName('kipsaté');
         $kipsate->setPrice(3.00);
         $kipsate->setSpecial(0);
         $kipsate->setAvailable(true);
         
         $ardeense_sate = new Snacks();
-        $ardeense_sate->setName('ardeense sat&eacute;');
+        $ardeense_sate->setName('ardeense saté');
         $ardeense_sate->setPrice(2.25);
         $ardeense_sate->setSpecial(0);
         $ardeense_sate->setAvailable(true);
