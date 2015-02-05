@@ -49,14 +49,18 @@ class CustomerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
+            $city = $this->getDoctrine()
+                        ->getRepository('UserBundle:City')
+                        ->findOneBy(array(
+                                        'name' => $entity->getCity()->getName()
+                                    ));
             $client = $this->getDoctrine()
                             ->getRepository('UserBundle:Customer')
                             ->findOneBy(array(
                                             'firstname'         => $entity->getFirstname(),
                                             'lastname'          => $entity->getLastname(),
                                             'address_line_1'    => $entity->getAddressLine1(),
-                                            'city'              => $entity->getCity()->getId(),
+                                            'city'              => $city,
                                         ));
             if (!$client) {
                 $em = $this->getDoctrine()->getManager();
