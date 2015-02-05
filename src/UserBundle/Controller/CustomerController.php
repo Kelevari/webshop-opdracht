@@ -49,11 +49,24 @@ class CustomerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
 
-            return $this->redirect($this->generateUrl('customer_show', array('id' => $entity->getId())));
+            $client = $this->getDoctrine()
+                            ->getRepository('UserBundle:Customer')
+                            ->findOneBy(array(
+                                            'firstname'         => $entity->getFirstname(),
+                                            'lastname'          => $entity->getLastname(),
+                                            'address_line_1'    => $entity->getAddressLine1(),
+                                            'city'              => $entity->getCity()->getId(),
+                                        ));
+            if (!$client) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('customer_show', array('id' => $entity->getId())));
+            }
+
+            return $this->redirect($this->generateUrl('customer_show', array('id' => $client->getId())));
         }
 
         return $this->redirect($this->generateUrl('customer_new', array('error' => 'somthing went wrong' )));

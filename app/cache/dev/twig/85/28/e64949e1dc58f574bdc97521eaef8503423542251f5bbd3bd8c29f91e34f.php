@@ -216,20 +216,15 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
     {
         // line 112
         echo "    <script type=\"text/javascript\">
-    \$('document').ready(function(){
-        \$('#button').click(function(){
-            \$('#register').toggle('slow');
-        });
-    });
+        \$('document').ready(function(){
 
-    var check = false;
-    function yesNo(check) {
-        if (check == false) {
-            check = true
-        } else{
-            check =false
-        };
-    }
+            \$('#button').click(function(){
+
+                \$('#register').slideToggle('slow');
+
+            });/*\$('#button').click(function(){*/
+                
+        });/*\$('document').ready(function(){*/
     </script>
 ";
     }
