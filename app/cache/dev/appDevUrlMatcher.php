@@ -1167,31 +1167,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
         not_customer:
 
-        if (0 === strpos($pathinfo, '/to')) {
-            // customer_create
-            if ($pathinfo === '/to') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
-                    goto not_customer_create;
-                }
-
-                return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::createAction',  '_route' => 'customer_create',);
-            }
-            not_customer_create:
-
-            // customer_new
-            if ($pathinfo === '/to') {
-                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                    $allow = array_merge($allow, array('GET', 'HEAD'));
-                    goto not_customer_new;
-                }
-
-                return array (  '_controller' => 'UserBundle\\Controller\\CustomerController::newAction',  '_route' => 'customer_new',);
-            }
-            not_customer_new:
-
-        }
-
         // customer_show
         if (preg_match('#^/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
@@ -1493,6 +1468,45 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_profile_delete:
 
             }
+
+        }
+
+        if (0 === strpos($pathinfo, '/test')) {
+            if (0 === strpos($pathinfo, '/test/testroute')) {
+                // customer_create
+                if ($pathinfo === '/test/testroute') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_customer_create;
+                    }
+
+                    return array (  '_controller' => 'UserBundle\\Controller\\TestController::createAction',  '_route' => 'customer_create',);
+                }
+                not_customer_create:
+
+                // customer_new
+                if ($pathinfo === '/test/testroute') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_customer_new;
+                    }
+
+                    return array (  '_controller' => 'UserBundle\\Controller\\TestController::newAction',  '_route' => 'customer_new',);
+                }
+                not_customer_new:
+
+            }
+
+            // user_test_test
+            if ($pathinfo === '/test/functiontest') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_user_test_test;
+                }
+
+                return array (  '_controller' => 'UserBundle\\Controller\\TestController::testAction',  '_route' => 'user_test_test',);
+            }
+            not_user_test_test:
 
         }
 

@@ -40,16 +40,22 @@ class Profile
     private $deleted_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Email", inversedBy="profile", cascade={"persist"})
-     * @ORM\JoinColumn(name="email_id", referencedColumnName="id")
-     */
-    private $email;
-
-    /**
     * 
     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Customer", mappedBy="profile",cascade={"persist"})
     */
     private $customer;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Email", mappedBy="profile",cascade={"persist"})
+     */
+    private $email;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->email = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -105,29 +111,6 @@ class Profile
     public function getSalt()
     {
         return $this->salt;
-    }
-
-    /**
-     * Set email
-     *
-     * @param \UserBundle\Entity\Email $email
-     * @return Profile
-     */
-    public function setEmail(\UserBundle\Entity\Email $email = null)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return \UserBundle\Entity\Email 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**

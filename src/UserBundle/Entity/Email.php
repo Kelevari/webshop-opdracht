@@ -20,16 +20,15 @@ class Email
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Profile", mappedBy="email", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Customer", mappedBy="email")
+     */
+    private $customer;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Profile", inversedBy="email",cascade={"persist"})
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
      */
     private $profile;
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->profile = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -95,5 +94,41 @@ class Email
     public function getProfile()
     {
         return $this->profile;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \UserBundle\Entity\Customer $customer
+     * @return Email
+     */
+    public function setCustomer(\UserBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+    
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \UserBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * Set profile
+     *
+     * @param \UserBundle\Entity\Profile $profile
+     * @return Email
+     */
+    public function setProfile(\UserBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+    
+        return $this;
     }
 }

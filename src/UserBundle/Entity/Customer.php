@@ -35,25 +35,24 @@ class Customer
     private $address_line_2;
 
     /**
-     * 
-     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id", unique=true)
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Profile", inversedBy="customer",cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Email", inversedBy="customer")
+     * @ORM\JoinColumn(name="email_id", referencedColumnName="id", unique=true)
      */
-    private $profile;
+    private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="BillingBundle\Entity\Bill", mappedBy="customer", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="BillingBundle\Entity\Bill", mappedBy="customer",cascade={"persist"})
      */
     private $bill;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Phone", inversedBy="customer", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Phone", inversedBy="customer",cascade={"persist"})
      * @ORM\JoinColumn(name="phone_id", referencedColumnName="id")
      */
     private $phone;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\City", inversedBy="customer", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\City", inversedBy="customer",cascade={"persist"})
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private $city;
@@ -169,29 +168,6 @@ class Customer
     }
 
     /**
-     * Set profile
-     *
-     * @param \UserBundle\Entity\Profile $profile
-     * @return Customer
-     */
-    public function setProfile(\UserBundle\Entity\Profile $profile = null)
-    {
-        $this->profile = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Get profile
-     *
-     * @return \UserBundle\Entity\Profile 
-     */
-    public function getProfile()
-    {
-        return $this->profile;
-    }
-
-    /**
      * Add bill
      *
      * @param \BillingBundle\Entity\Bill $bill
@@ -268,5 +244,28 @@ class Customer
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set email
+     *
+     * @param \UserBundle\Entity\Email $email
+     * @return Customer
+     */
+    public function setEmail(\UserBundle\Entity\Email $email = null)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return \UserBundle\Entity\Email 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

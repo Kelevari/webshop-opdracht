@@ -16,6 +16,7 @@ class EmailType extends AbstractType
     {
         $builder
             ->add('email', 'email', array('label' => false,'required' => false, 'empty_data'  => null,  'attr' => array('class' => 'form-control input-md')))
+            ->add('profile', new ProfileType(), array('label' => false))
         ;
     }
     

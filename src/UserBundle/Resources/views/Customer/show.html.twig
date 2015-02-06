@@ -22,8 +22,16 @@
                 <td>{{ entity.addressline1 }}</td>
             </tr>
             <tr>
-                <th>Address_line_2</th>
+                <th></th>
                 <td>{{ entity.addressline2 }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ entity.city.name }}</td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td>{{ entity.city.zip }}</td>
             </tr>
         </tbody>
     </table>
