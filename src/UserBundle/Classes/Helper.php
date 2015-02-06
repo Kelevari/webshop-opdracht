@@ -108,7 +108,7 @@ class Helper
 		}
 	}
 
-	public function checkCombination($city, $customer, $email, $phone, $profile)
+	public function checkCombination($city, $customer, $email, $phone)
 	{
 		$user = $this->em->getRepository('UserBundle:Customer')
 						->findOneBy(array(
@@ -120,7 +120,7 @@ class Helper
 		if ($user != NULL) {
 			return $user;
 		}else{
-			return array('city' => $city, 'customer' => $customer, 'phone' => $phone, 'profile' => $profile);
+			return array('city' => $city, 'customer' => $customer, 'phone' => $phone);
 		}
 	}
 }

@@ -64,10 +64,10 @@ class Profile extends \UserBundle\Entity\Profile implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'customer');
+            return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'customer', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'customer');
+        return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'customer', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email');
     }
 
     /**
@@ -230,28 +230,6 @@ class Profile extends \UserBundle\Entity\Profile implements \Doctrine\ORM\Proxy\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', array());
 
         return parent::getSalt();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setEmail(\UserBundle\Entity\Email $email = NULL)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
-
-        return parent::setEmail($email);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getEmail()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
-
-        return parent::getEmail();
     }
 
     /**

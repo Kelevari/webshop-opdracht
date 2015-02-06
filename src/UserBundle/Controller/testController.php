@@ -41,12 +41,32 @@ class TestController extends Controller
             $found_city     = $this->get('app.Helper')->checkDatabase($customer->getCity());
             $found_customer = $this->get('app.Helper')->checkDatabase($customer);
             $found_email    = $this->get('app.Helper')->checkDatabase($customer->getEmail());
-            $found_pfone    = $this->get('app.Helper')->checkDatabase($customer->getPhone());
-            $found_profile  = $this->get('app.Helper')->checkDatabase($customer->getEmail()->getProfile());
+            $found_phone    = $this->get('app.Helper')->checkDatabase($customer->getPhone());
+            
+            $em = $this->getDoctrine()->getManager();
 
-            $city           = $this->get('app.Helper')->checkCombination($found_city, $found_customer, $found_pfone, $found_profile);
+            if ($found_email != NULL) {
+                $user = $this->get('app.Helper')->checkCombination($found_city, $found_customer, $found_email, $found_phone);
+                
+                return new Response('user already exists');
+
+            }elseif ($found_email == NULL && $customer->getEmail()->getEmail() != NULL) {
+                
+                $em->persist($customer);
+                $em->flush();
+
+                return new Response(var_dump($customer->getEmail()->getEmail()));
+
+            }elseif ($found_email == NULL && $customer->getEmail()->getEmail() == NULL) {
+                $customer->setEmail(NULL);
+                $em->persist($customer);
+                $em->flush();
+
+                return new Response(var_dump($customer));
+
+            }
+
             // return $this->redirect($this->generateUrl('customer_show', array('id' => $customer->getId())));
-            return new Response(var_dump($city));
         }
 
         return $this->redirect($this->generateUrl('customer_new', array('error' => 'somthing went wrong' )));

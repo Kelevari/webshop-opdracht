@@ -35,7 +35,7 @@ class Customer
     private $address_line_2;
 
     /**
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Email", inversedBy="customer")
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Email", inversedBy="customer",cascade={"persist"})
      * @ORM\JoinColumn(name="email_id", referencedColumnName="id", unique=true)
      */
     private $email;
