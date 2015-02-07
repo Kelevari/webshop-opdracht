@@ -64,10 +64,10 @@ class Email extends \UserBundle\Entity\Email implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'email', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'profile');
+            return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'email', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'customer', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'profile');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'email', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'profile');
+        return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'email', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'customer', '' . "\0" . 'UserBundle\\Entity\\Email' . "\0" . 'profile');
     }
 
     /**
@@ -241,6 +241,39 @@ class Email extends \UserBundle\Entity\Email implements \Doctrine\ORM\Proxy\Prox
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProfile', array());
 
         return parent::getProfile();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCustomer(\UserBundle\Entity\Customer $customer = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCustomer', array($customer));
+
+        return parent::setCustomer($customer);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCustomer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCustomer', array());
+
+        return parent::getCustomer();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setProfile(\UserBundle\Entity\Profile $profile = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProfile', array($profile));
+
+        return parent::setProfile($profile);
     }
 
 }

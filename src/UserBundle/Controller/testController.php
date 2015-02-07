@@ -37,7 +37,6 @@ class TestController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // check if city is in db
             $found_city     = $this->get('app.Helper')->checkDatabase($customer->getCity());
             $found_customer = $this->get('app.Helper')->checkDatabase($customer);
             $found_email    = $this->get('app.Helper')->checkDatabase($customer->getEmail());
@@ -51,22 +50,34 @@ class TestController extends Controller
                 return new Response('user already exists');
 
             }elseif ($found_email == NULL && $customer->getEmail()->getEmail() != NULL) {
-                
-                $em->persist($customer);
-                $em->flush();
-
-                return new Response(var_dump($customer->getEmail()->getEmail()));
+                if ($found_customer != NULL && $found_customer->getEmail() != NULL) {
+                    
+                    return new Response('There is already a user registered with a different email address, maybe this is you? Login or check your submitted data');
+                }else{
+                    
+                    $em->persist($customer);
+                    $em->flush();
+                    
+                    return $this->redirect($this->generateUrl('customer_show', array('id' => $customer->getId())));
+                }
 
             }elseif ($found_email == NULL && $customer->getEmail()->getEmail() == NULL) {
+                
+                if ($found_city != NULL) {
+                    $customer->setCity($found_city);
+                }
+                
+                if ($found_phone != NULL) {
+                    $customer->setPhone($found_phone);
+                }
+
                 $customer->setEmail(NULL);
                 $em->persist($customer);
                 $em->flush();
 
-                return new Response(var_dump($customer));
+                return $this->redirect($this->generateUrl('customer_show', array('id' => $customer->getId())));
 
             }
-
-            // return $this->redirect($this->generateUrl('customer_show', array('id' => $customer->getId())));
         }
 
         return $this->redirect($this->generateUrl('customer_new', array('error' => 'somthing went wrong' )));

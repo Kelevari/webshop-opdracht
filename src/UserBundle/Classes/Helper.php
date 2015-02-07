@@ -51,7 +51,7 @@ class Helper
 						'zip' 	=> $obj->getZip()
 					));
 					if ($found) {
-						return $found->getId();
+						return $found;
 					}else{
 						return NULL;
 					}
@@ -64,7 +64,7 @@ class Helper
 						'address_line_1' 	=> $obj->getAddressLine1()
 					));
 					if ($found) {
-						return $found->getId();
+						return $found;
 					}else{
 						return NULL;
 					}
@@ -75,7 +75,7 @@ class Helper
 						'email' => $obj->getEmail()
 					));
 					if ($found) {
-						return $found->getId();
+						return $found;
 					}else{
 						return NULL;
 					}
@@ -86,7 +86,7 @@ class Helper
 						'number' => $obj->getNumber()
 					));
 					if ($found) {
-						return $found->getId();
+						return $found;
 					}else{
 						return NULL;
 					}
@@ -97,7 +97,7 @@ class Helper
 						'id' => $obj->getId()
 					));
 					if ($found) {
-						return $found->getId();
+						return $found;
 					}else{
 						return NULL;
 					}
@@ -112,7 +112,7 @@ class Helper
 	{
 		$user = $this->em->getRepository('UserBundle:Customer')
 						->findOneBy(array(
-								'id' 	=> $customer,
+								'id' 	=> $customer->getId(),
 								'phone' => $phone,
 								'city' 	=> $city,
 								'email' => $email
@@ -120,7 +120,7 @@ class Helper
 		if ($user != NULL) {
 			return $user;
 		}else{
-			return array('city' => $city, 'customer' => $customer, 'phone' => $phone);
+			return array('city' => $city, 'customer' => $customer, 'email' => $email, 'phone' => $phone);
 		}
 	}
 }
