@@ -104,6 +104,14 @@
     {% block js %}
         
     {% endblock %}
+    <script type="text/javascript">
+            $('#checkbox').change(function () {
+                $("#userbundle_customer_email_email").prop('required', true);
+                $("#userbundle_customer_email_profile_password_first").prop('required', true);
+                $("#userbundle_customer_email_profile_password_second").prop('required', true);
+            });
+                
+    </script>
 </body>
 
 </html>

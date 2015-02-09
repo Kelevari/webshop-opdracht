@@ -64,10 +64,10 @@ class Profile extends \UserBundle\Entity\Profile implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'customer', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email');
+            return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'customer', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email');
+        return array('__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'created_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'updated_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'deleted_at', '' . "\0" . 'UserBundle\\Entity\\Profile' . "\0" . 'email');
     }
 
     /**
@@ -173,6 +173,17 @@ class Profile extends \UserBundle\Entity\Profile implements \Doctrine\ORM\Proxy\
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function checkPassword($password)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'checkPassword', array($password));
+
+        return parent::checkPassword($password);
+    }
+
     /**
      * {@inheritDoc}
      */

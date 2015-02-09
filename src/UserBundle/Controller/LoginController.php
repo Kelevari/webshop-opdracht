@@ -1,0 +1,7 @@
+<?php
+
+namespace UserController\Controller;
+
+
+
+?>

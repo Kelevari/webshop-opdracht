@@ -145,7 +145,15 @@ class __TwigTemplate_cfa48e56fc15f66c75489e92514a4b2a927027c339a343cae4d63f78fa4
         echo "    ";
         $this->displayBlock('js', $context, $blocks);
         // line 107
-        echo "</body>
+        echo "    <script type=\"text/javascript\">
+            \$('#checkbox').change(function () {
+                \$(\"#userbundle_customer_email_email\").prop('required', true);
+                \$(\"#userbundle_customer_email_profile_password_first\").prop('required', true);
+                \$(\"#userbundle_customer_email_profile_password_second\").prop('required', true);
+            });
+                
+    </script>
+</body>
 
 </html>
 ";
@@ -210,6 +218,6 @@ class __TwigTemplate_cfa48e56fc15f66c75489e92514a4b2a927027c339a343cae4d63f78fa4
 
     public function getDebugInfo()
     {
-        return array (  197 => 105,  194 => 104,  189 => 74,  186 => 73,  182 => 21,  168 => 19,  163 => 15,  160 => 14,  155 => 12,  148 => 107,  145 => 104,  125 => 102,  120 => 98,  97 => 76,  95 => 73,  80 => 60,  43 => 22,  41 => 14,  36 => 12,  23 => 1,);
+        return array (  205 => 105,  202 => 104,  197 => 74,  194 => 73,  190 => 21,  176 => 19,  171 => 15,  168 => 14,  163 => 12,  148 => 107,  145 => 104,  125 => 102,  120 => 98,  97 => 76,  95 => 73,  80 => 60,  43 => 22,  41 => 14,  36 => 12,  23 => 1,);
     }
 }

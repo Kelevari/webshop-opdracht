@@ -11,7 +11,14 @@
     
 {% endblock %}
 {% block content %}
-
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+{% if customer is defined %}
+    {{ customer.getFirstname() }}
+{% endif %}
 	   {{ form_start(form) }}
     <fieldset>
 
@@ -70,16 +77,17 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="register">Register?</label>
             <div class="col-md-4">
-                <p onclick="yesNo();" id="button" class="btn btn-info">
+                <label id="button" class="btn btn-info" for="checkbox">
                     Click here!
-                </p>
+                </label>
+                <input type="checkbox" id="checkbox" style="display:none">
             </div>
         </div>
 
         <div id="register" style="display:none">
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="userbundle_customer_profile_email_email">Email:</label>  
+                <label class="col-md-4 control-label" for="userbundle_customer_email_email">Email:*</label>  
                 <div class="col-md-5">
                     {{ form_row(form.email.email) }}
                 </div>
@@ -87,9 +95,17 @@
 
             <!-- Password input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="userbundle_customer_profile_password">Password</label>
+                <label class="col-md-4 control-label" for="userbundle_customer_email_profile_password_first">Password:*</label>
                 <div class="col-md-5">
-                    {{ form_row(form.email.profile.password) }}
+                    {{ form_row(form.email.profile.password.first) }}
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="userbundle_customer_email_profile_password_second">Repeat Password:*</label>
+                <div class="col-md-5">
+                    {{ form_row(form.email.profile.password.second) }}
                 </div>
             </div>
         </div>

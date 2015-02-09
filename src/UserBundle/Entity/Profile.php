@@ -1,6 +1,7 @@
 <?php
 namespace UserBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -40,12 +41,6 @@ class Profile
     private $deleted_at;
 
     /**
-    * 
-    * @ORM\OneToOne(targetEntity="UserBundle\Entity\Customer", mappedBy="profile",cascade={"persist"})
-    */
-    private $customer;
-
-    /**
      * @ORM\OneToMany(targetEntity="UserBundle\Entity\Email", mappedBy="profile",cascade={"persist"})
      */
     private $email;
@@ -55,6 +50,14 @@ class Profile
     public function __construct()
     {
         $this->email = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /*
+    * @Assert\
+    */
+    public function checkPassword($password)
+    {
+        return $this->password === $password;
     }
 
     /**

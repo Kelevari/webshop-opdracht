@@ -1,0 +1,50 @@
+{% extends "SiteBundle:Layout:base.html.twig" %}
+{% block title %}Home{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+    '@SiteBundle/Resources/public/css/shop-homepage.css'
+    filter='cssrewrite'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+
+{% endblock %}
+{% block content %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div id="login">
+        <form action="{{ path('login') }}" method="post">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Login:</legend>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="email">Email:</label>
+                    <div class="col-md-5">
+                        <input type="email" id="email" name="email">
+                    </div>
+                </div>
+
+                <!-- Password input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Password:</label>
+                    <div class="col-md-5">
+                        <input type="password" id="password" name="password">
+                    </div>
+                </div>
+
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <div class="col-md-push-4 col-md-5">
+                        <input type="submit" value="Login">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    {% endblock %}

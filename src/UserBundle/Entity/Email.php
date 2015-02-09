@@ -20,7 +20,7 @@ class Email
     private $email;
 
     /**
-     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Customer", mappedBy="email",cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Customer", mappedBy="email",cascade={"all"})
      */
     private $customer;
 

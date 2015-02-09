@@ -76,9 +76,32 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
     public function block_content($context, array $blocks = array())
     {
         // line 14
-        echo "
-\t   ";
-        // line 15
+        echo "    ";
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "notice"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
+            // line 15
+            echo "        <div class=\"flash-notice\">
+            ";
+            // line 16
+            echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
+            echo "
+        </div>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 19
+        if (array_key_exists("customer", $context)) {
+            // line 20
+            echo "    ";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["customer"]) ? $context["customer"] : $this->getContext($context, "customer")), "getFirstname", array(), "method"), "html", null, true);
+            echo "
+";
+        }
+        // line 22
+        echo "\t   ";
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
         echo "
     <fieldset>
@@ -89,7 +112,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_firstname\">Firstname:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 23
+        // line 30
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "firstname", array()), 'row');
         echo "
             </div>
@@ -99,7 +122,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_lastname\">Lastname:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 30
+        // line 37
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lastname", array()), 'row');
         echo "
             </div>
@@ -109,7 +132,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_address_line_1\">Address line 1:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 37
+        // line 44
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_1", array()), 'row');
         echo "
             </div>
@@ -119,7 +142,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_address_line_2\">Address line 2:</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 44
+        // line 51
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "address_line_2", array()), 'row');
         echo "
             </div>
@@ -129,7 +152,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_phone_number\">phone:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 51
+        // line 58
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "phone", array()), "number", array()), 'row');
         echo "
             </div>
@@ -139,7 +162,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_city_name\">City:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 58
+        // line 65
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "name", array()), 'row');
         echo "
             </div>
@@ -149,7 +172,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
             <label class=\"col-md-4 control-label\" for=\"userbundle_customer_city_zip\">Zip:*</label>  
             <div class=\"col-md-5\">
 \t           ";
-        // line 65
+        // line 72
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "city", array()), "zip", array()), 'row');
         echo "
             </div>
@@ -159,19 +182,20 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
         <div class=\"form-group\">
             <label class=\"col-md-4 control-label\" for=\"register\">Register?</label>
             <div class=\"col-md-4\">
-                <p onclick=\"yesNo();\" id=\"button\" class=\"btn btn-info\">
+                <label id=\"button\" class=\"btn btn-info\" for=\"checkbox\">
                     Click here!
-                </p>
+                </label>
+                <input type=\"checkbox\" id=\"checkbox\" style=\"display:none\">
             </div>
         </div>
 
         <div id=\"register\" style=\"display:none\">
             <!-- Text input-->
             <div class=\"form-group\">
-                <label class=\"col-md-4 control-label\" for=\"userbundle_customer_profile_email_email\">Email:</label>  
+                <label class=\"col-md-4 control-label\" for=\"userbundle_customer_email_email\">Email:*</label>  
                 <div class=\"col-md-5\">
                     ";
-        // line 84
+        // line 92
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), "email", array()), 'row');
         echo "
                 </div>
@@ -179,11 +203,22 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
 
             <!-- Password input-->
             <div class=\"form-group\">
-                <label class=\"col-md-4 control-label\" for=\"userbundle_customer_profile_password\">Password</label>
+                <label class=\"col-md-4 control-label\" for=\"userbundle_customer_email_profile_password_first\">Password:*</label>
                 <div class=\"col-md-5\">
                     ";
-        // line 92
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), "profile", array()), "password", array()), 'row');
+        // line 100
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), "profile", array()), "password", array()), "first", array()), 'row');
+        echo "
+                </div>
+            </div>
+
+            <!-- Password input-->
+            <div class=\"form-group\">
+                <label class=\"col-md-4 control-label\" for=\"userbundle_customer_email_profile_password_second\">Repeat Password:*</label>
+                <div class=\"col-md-5\">
+                    ";
+        // line 108
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "email", array()), "profile", array()), "password", array()), "second", array()), 'row');
         echo "
                 </div>
             </div>
@@ -193,7 +228,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
         <div class=\"form-group\">
             <div class=\"col-md-push-4 col-md-5\">
 \t           ";
-        // line 100
+        // line 116
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
             </div>
@@ -201,7 +236,7 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
         <div class=\"form-group\">
             <div class=\"col-md-push-4 col-md-5\">
                 <a class=\"btn btn-danger btn-xs btn-block\" href=\"";
-        // line 105
+        // line 121
         echo $this->env->getExtension('routing')->getPath("customer");
         echo "\">
                     Cancel
@@ -211,10 +246,10 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
 ";
     }
 
-    // line 111
+    // line 127
     public function block_js($context, array $blocks = array())
     {
-        // line 112
+        // line 128
         echo "    <script type=\"text/javascript\">
         \$('document').ready(function(){
 
@@ -241,6 +276,6 @@ class __TwigTemplate_8528e64949e1dc58f574bdc97521eaef8503423542251f5bbd3bd8c29f9
 
     public function getDebugInfo()
     {
-        return array (  218 => 112,  215 => 111,  205 => 105,  197 => 100,  186 => 92,  175 => 84,  153 => 65,  143 => 58,  133 => 51,  123 => 44,  113 => 37,  103 => 30,  93 => 23,  82 => 15,  79 => 14,  76 => 13,  71 => 11,  57 => 9,  53 => 5,  48 => 4,  45 => 3,  39 => 2,  11 => 1,);
+        return array (  253 => 128,  250 => 127,  240 => 121,  232 => 116,  221 => 108,  210 => 100,  199 => 92,  176 => 72,  166 => 65,  156 => 58,  146 => 51,  136 => 44,  126 => 37,  116 => 30,  104 => 22,  98 => 20,  96 => 19,  87 => 16,  84 => 15,  79 => 14,  76 => 13,  71 => 11,  57 => 9,  53 => 5,  48 => 4,  45 => 3,  39 => 2,  11 => 1,);
     }
 }

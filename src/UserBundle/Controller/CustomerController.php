@@ -38,42 +38,70 @@ class CustomerController extends Controller
     /**
      * Creates a new Customer entity.
      *
-     * @Route("/to", name="customer_create")
+     * @Route("/new", name="customer_create")
      * @Method("POST")
      * @Template()
      */
     public function createAction(Request $request)
     {
-        $entity = new Customer();
-        $form = $this->createCreateForm($entity);
+        $customer = new Customer();
+        $form = $this->createCreateForm($customer);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $city = $this->getDoctrine()
-                        ->getRepository('UserBundle:City')
-                        ->findOneBy(array(
-                                        'name' => $entity->getCity()->getName()
-                                    ));
-            $client = $this->getDoctrine()
-                            ->getRepository('UserBundle:Customer')
-                            ->findOneBy(array(
-                                            'firstname'         => $entity->getFirstname(),
-                                            'lastname'          => $entity->getLastname(),
-                                            'address_line_1'    => $entity->getAddressLine1(),
-                                            'city'              => $city,
-                                        ));
-            if (!$client) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
+            $found_city     = $this->get('app.Helper')->checkDatabase($customer->getCity());
+            $found_customer = $this->get('app.Helper')->checkDatabase($customer);
+            $found_email    = $this->get('app.Helper')->checkDatabase($customer->getEmail());
+            $found_phone    = $this->get('app.Helper')->checkDatabase($customer->getPhone());
+
+            $em = $this->getDoctrine()->getManager();
+
+            if ($found_email != NULL) {
+
+                // $this->get('app.Helper')->checkCombination($found_city, $found_customer, $found_email, $found_phone);
+
+                $request->getSession()->getFlashBag()->add(
+                    'notice',
+                    'User already exists'
+                );
+
+                return $this->redirect($this->generateUrl('customer_create'), array('customer' => $customer));
+
+            }elseif ($found_email == NULL && $customer->getEmail()->getEmail() != NULL) {
+                if ($found_customer != NULL && $found_customer->getEmail() != NULL) {
+
+                    return new Response('There is already a user registered with a different email address, maybe this is you? Login or check your submitted data');
+                }else{
+
+                    $em->persist($customer);
+                    $em->flush();
+
+                    return $this->redirect($this->generateUrl('customer_show', array('id' => $customer->getId())));
+                }
+
+            }elseif ($found_email == NULL && $customer->getEmail()->getEmail() == NULL) {
+
+                if ($found_city != NULL) {
+                    $customer->setCity($found_city);
+                }
+
+                if ($found_phone != NULL) {
+                    $customer->setPhone($found_phone);
+                }
+
+                $customer->setEmail(NULL);
+                $em->persist($customer);
                 $em->flush();
-                
-                return $this->redirect($this->generateUrl('customer_show', array('id' => $entity->getId())));
+
+                return $this->redirect($this->generateUrl('customer_show', array('id' => $customer->getId())));
+
             }
-
-            return $this->redirect($this->generateUrl('customer_show', array('id' => $client->getId())));
         }
-
-        return $this->redirect($this->generateUrl('customer_new', array('error' => 'somthing went wrong' )));
+        $request->getSession()->getFlashBag()->add(
+            'notice',
+            'somthing went wrong'
+        );
+        return $this->redirect($this->generateUrl('customer_new'), array('customer' => $customer));
     }
 
     /**
@@ -99,17 +127,17 @@ class CustomerController extends Controller
     /**
      * Displays a form to create a new Customer entity.
      *
-     * @Route("/to", name="customer_new")
+     * @Route("/new", name="customer_new")
      * @Method("GET")
      * @Template("UserBundle:Customer:new.html.twig")
      */
     public function newAction()
     {
-        $entity = new Customer();
-        $form   = $this->createCreateForm($entity);
+        $customer = new Customer();
+        $form   = $this->createCreateForm($customer);
 
         return array(
-            'entity' => $entity,
+            'entity' => $customer,
             'form'   => $form->createView(),
         );
     }
